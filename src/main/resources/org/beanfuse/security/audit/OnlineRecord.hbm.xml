@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="org.beanfuse.security.audit.OnlineRecord" table="XTQX_ZXJL_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_ZXJL_T</param>
+      </generator>
+    </id>
+    <property name="sessionId" column="HHID" not-null="true"/>
+    <property name="name" column="YHMC" length="40" not-null="true"/>
+    <property name="userName" column="YHXM" length="50" not-null="true"/>
+    <property name="host" column="IP" length="40" not-null="true"/>
+    <property name="loginAt" column="DLSJ" not-null="true"/>
+    <property name="logoutAt" column="TCSJ" not-null="true"/>
+    <property name="lastAccessAt" column="ZHFWSJ" not-null="true"/>
+    <property name="onlineTime" column="ZXSJ" not-null="true"/>
+    <property name="category" column="YHLX" length="10" not-null="true"/>
+    <property name="remark" column="BZ" length="100"/>
+  </class>
+</hibernate-mapping>

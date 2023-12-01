@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="org.beanfuse.security.model.UserAuthority"
+    entity-name="org.beanfuse.security.UserAuthority"
+    table="XTQX_YHQX_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_YHQX_T</param>
+      </generator>
+    </id>
+    <many-to-one name="user" column="YHID" />
+    <property name="enabled" column="SFKY" not-null="true" />
+    <many-to-one name="resource" column="ZYID" />
+
+    <set name="restrictions" cascade="all,delete-orphan">
+      <key column="YHQXID" />
+      <one-to-many
+        class="org.beanfuse.security.restriction.UserAuthorityRestriction" />
+    </set>
+  </class>
+
+  <class name="org.beanfuse.security.model.RoleAuthority"
+    table="XTQX_JSQX_T"
+    entity-name="org.beanfuse.security.RoleAuthority">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_JSQX_T</param>
+      </generator>
+    </id>
+    <many-to-one name="role" column="JSID" />
+    <property name="enabled" column="SFKY" not-null="true" />
+    <many-to-one name="resource" column="ZYID" />
+
+    <set name="restrictions" cascade="all,delete-orphan">
+      <key column="JSQXID" />
+      <one-to-many
+        class="org.beanfuse.security.restriction.RoleAuthorityRestriction" />
+    </set>
+  </class>
+
+  <query name="getUserAuthorityByResourceId">
+    <![CDATA[
+       from
+        UserAuthority as ua
+       where
+      (ua.user.id = :userId and
+     ua.resource.id = :resourceId)
+    ]]>
+  </query>
+  <query name="getUserAuthorities">
+    <![CDATA[
+       select
+         distinct a
+       from
+         User as u
+         join u.authorities as a
+     join a.resource as m
+       where
+      u.id = :userId
+      and m.enabled=true
+  ]]>
+  </query>
+  <query name="getRoleAuthorityByResourceId">
+    <![CDATA[
+       from
+        RoleAuthority as ra
+       where
+      (ra.role.id = :roleId and
+     ra.resource.id = :resourceId)
+    ]]>
+  </query>
+  <query name="getRoleAuthorities">
+    <![CDATA[
+       select
+         distinct a
+       from
+         Role as r
+         join r.authorities as a
+       join a.resource as m
+       where
+     r.id = :roleId
+     and  m.enabled=true
+    ]]>
+  </query>
+
+</hibernate-mapping>

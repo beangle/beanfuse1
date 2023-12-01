@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class
+    name="org.beanfuse.security.portal.model.UserMenuAuthority"
+    table="XTQX_YHMK_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_YHMK_T</param>
+      </generator>
+    </id>
+    <many-to-one name="user" column="YHID" />
+    <many-to-one name="menu" column="MKID" />
+    <property name="enabled" column="SFKY" not-null="true" />
+  </class>
+
+  <class
+    name="org.beanfuse.security.portal.model.RoleMenuAuthority"
+    table="XTQX_JSMK_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_JSMK_T</param>
+      </generator>
+    </id>
+    <many-to-one name="role" column="JSID" />
+    <many-to-one name="menu" column="MKID" />
+    <property name="enabled" column="SFKY" not-null="true" />
+  </class>
+
+  <query name="getUserMenu">
+    <![CDATA[
+       from
+        UserMenuAuthority as ua
+       where
+      (ua.user = :user and
+     ua.menu = :menu)
+    ]]>
+  </query>
+  <query name="getRoleMenu">
+    <![CDATA[
+       from
+        RoleMenuAuthority as ra
+       where
+      (ra.role = :role and
+     ra.menu = :menu)
+    ]]>
+  </query>
+
+</hibernate-mapping>

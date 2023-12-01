@@ -1,0 +1,16 @@
+<?xml version="1.0"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"><hibernate-mapping>  <class name="org.beanfuse.security.portal.model.MenuProfile"
+    table="XTQX_MKPZ_T">
+    <cache usage="read-write"/>
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_MKPZ_T</param>
+      </generator>
+    </id>
+    <property name="name" column="MKPZMC" length="50" unique="true"/>
+    <bag name="menus" cascade="all">
+      <key column="MKPZID"/>
+      <one-to-many
+        class="org.beanfuse.security.portal.model.Menu"/>
+    </bag>
+    <many-to-one name="category" column="YHLBID"  not-null="true"/>
+  </class></hibernate-mapping>

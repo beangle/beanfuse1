@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class
+    name="org.beanfuse.security.restriction.model.RestrictionItem"
+    entity-name="org.beanfuse.security.restriction.UserRestrictionItem"
+    table="XTQX_XZQX_YH_XZX_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_XZQX_YH_XZX_T</param>
+      </generator>
+    </id>
+    <many-to-one name="restriction"
+      entity-name="org.beanfuse.security.restriction.UserRestriction"
+      column="XZQXID" />
+    <many-to-one name="param" column="XZCSID" />
+    <property name="value" column="XZNR" length="1024" />
+  </class>
+
+  <class
+    name="org.beanfuse.security.restriction.model.RestrictionItem"
+    entity-name="org.beanfuse.security.restriction.RoleRestrictionItem"
+    table="XTQX_XZQX_JS_XZX_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_XZQX_JS_XZX_T</param>
+      </generator>
+    </id>
+    <many-to-one name="restriction"
+      entity-name="org.beanfuse.security.restriction.RoleRestriction"
+      column="XZQXID" />
+    <many-to-one name="param" column="XZCSID" />
+    <property name="value" column="XZNR" length="1024" />
+  </class>
+
+  <class
+    name="org.beanfuse.security.restriction.model.RestrictionItem"
+    entity-name="org.beanfuse.security.restriction.UserAuthorityRestrictionItem"
+    table="XTQX_XZQX_YHQX_XZX_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_XZQX_YHQX_XZX_T</param>
+      </generator>
+    </id>
+    <many-to-one name="restriction"
+      entity-name="org.beanfuse.security.restriction.UserAuthorityRestriction"
+      column="XZQXID" />
+    <many-to-one name="param" column="XZCSID" />
+    <property name="value" column="XZNR" length="1024" />
+  </class>
+
+  <class
+    name="org.beanfuse.security.restriction.model.RestrictionItem"
+    entity-name="org.beanfuse.security.restriction.RoleAuthorityRestrictionItem"
+    table="XTQX_XZQX_JSQX_XZX_T">
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_XZQX_JSQX_XZX_T</param>
+      </generator>
+    </id>
+    <many-to-one name="restriction"
+      entity-name="org.beanfuse.security.restriction.RoleAuthorityRestriction"
+      column="XZQXID" />
+    <many-to-one name="param" column="XZCSID" />
+    <property name="value" column="XZNR" length="1024" />
+  </class>
+</hibernate-mapping>

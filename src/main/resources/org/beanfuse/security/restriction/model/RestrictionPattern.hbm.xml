@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="org.beanfuse.security.restriction.model.RestrictionPattern"
+    entity-name="org.beanfuse.security.restriction.RestrictionPattern"
+    table="XTQX_XZMS_T">
+    <cache usage="read-write" />
+    <id name="id" column="ID" unsaved-value="null">
+      <generator class="sequence">
+        <param name="sequence">SEQ_XTQX_XZMS_T</param>
+      </generator>
+    </id>
+    <property name="name" column="MSM" not-null="true"/>
+    <property name="content" column="MSNR" not-null="true"/>
+    <property name="description" column="MSMS" not-null="true"/>
+
+    <set name="params" table="XTQX_XZMS_CS_T">
+      <key column="XZMSID"/>
+      <many-to-many entity-name="org.beanfuse.security.restriction.PatternParam" column="MSCSID"/>
+    </set>
+  </class>
+
+</hibernate-mapping>
