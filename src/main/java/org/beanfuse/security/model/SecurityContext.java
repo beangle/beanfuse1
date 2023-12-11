@@ -18,14 +18,10 @@
  */
 package org.beanfuse.security.model;
 
-import org.beanfuse.security.Resource;
-import org.beanfuse.security.User;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecurityContext
-    implements org.beanfuse.security.SecurityContext {
+public class SecurityContext {
 
   public SecurityContext() {
     restrictions = new ArrayList(0);

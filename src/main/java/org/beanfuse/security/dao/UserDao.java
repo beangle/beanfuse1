@@ -18,7 +18,7 @@
  */
 package org.beanfuse.security.dao;
 
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.User;
 
 import java.util.List;
 

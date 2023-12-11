@@ -19,8 +19,8 @@
 package org.beanfuse.security.restriction.service;
 
 import org.beanfuse.commons.query.EntityQuery;
-import org.beanfuse.security.Resource;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.Resource;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.dao.AuthorityDao;
 import org.beanfuse.security.restriction.PatternParam;
 import org.beanfuse.security.restriction.Restriction;

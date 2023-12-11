@@ -19,9 +19,9 @@
 package org.beanfuse.security.portal.dao.hibernate;
 
 import org.beanfuse.commons.utils.persistence.UtilDao;
-import org.beanfuse.security.Authority;
-import org.beanfuse.security.Role;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.Authority;
+import org.beanfuse.security.model.Role;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.portal.dao.MenuAuthorityDao;
 import org.beanfuse.security.portal.model.Menu;
 import org.beanfuse.security.portal.model.MenuAuthority;

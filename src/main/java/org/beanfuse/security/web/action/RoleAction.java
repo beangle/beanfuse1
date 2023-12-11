@@ -24,12 +24,13 @@ import org.beanfuse.commons.query.Condition;
 import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.commons.query.OrderUtils;
 import org.beanfuse.commons.transfer.exporter.PropertyExtractor;
-import org.beanfuse.security.Role;
+import org.beanfuse.security.model.Role;
 import org.beanfuse.security.management.ManagedRole;
 import org.beanfuse.security.management.RoleManager;
 import org.beanfuse.security.management.service.RoleMngService;
 import org.beanfuse.security.model.AbstractAuthorityObject;
 import org.beanfuse.security.model.RolePropertyExtractor;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.service.AuthorityService;
 import org.beanfuse.security.service.RoleService;
 import org.beanfuse.security.service.UserService;
@@ -52,12 +53,12 @@ public class RoleAction extends SecurityBaseAction {
 
   protected void indexSetting(HttpServletRequest request)
       throws Exception {
-    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
   }
 
   protected void editSetting(HttpServletRequest request, Entity entity)
       throws Exception {
-    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
     AbstractAuthorityObject authority = (AbstractAuthorityObject) entity;
     request.setAttribute("authority", authority);
   }
@@ -93,7 +94,7 @@ public class RoleAction extends SecurityBaseAction {
       throws Exception {
     Role role = (Role) entity;
     if (null != role) {
-      List list = utilService.load(org.beanfuse.security.Role.class, "name", role.getName());
+      List list = utilService.load(Role.class, "name", role.getName());
       int isUniqueFlag = 0;
       if (null != role.getId())
         isUniqueFlag = 1;
@@ -101,7 +102,7 @@ public class RoleAction extends SecurityBaseAction {
         return redirect(request, "edit", "info.save.error.unique.name");
     }
     if (null == role.getId()) {
-      org.beanfuse.security.User creator = userService.get(getUserId(request));
+      User creator = userService.get(getUserId(request));
       roleMngService.create((RoleManager) creator, (ManagedRole) role);
     } else {
       roleService.saveOrUpdate(role);
@@ -112,7 +113,7 @@ public class RoleAction extends SecurityBaseAction {
   public ActionForward remove(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
       throws Exception {
     String roleIdSeq = request.getParameter("roleIds");
-    org.beanfuse.security.User curUser = userService.get(getUserId(request));
+    User curUser = userService.get(getUserId(request));
     List toBeRemoved = roleService.get(SeqStringUtil.transformToLong(roleIdSeq));
     roleMngService.remove((RoleManager) curUser, toBeRemoved);
     return redirect(request, "search", "info.delete.success");

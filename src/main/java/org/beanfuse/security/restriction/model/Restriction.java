@@ -28,9 +28,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-// Referenced classes of package org.beanfuse.security.restriction.model:
-//            RestrictionItem
-
 public class Restriction extends LongIdObject
     implements org.beanfuse.security.restriction.Restriction {
 

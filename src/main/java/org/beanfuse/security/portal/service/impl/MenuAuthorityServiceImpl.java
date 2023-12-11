@@ -18,16 +18,17 @@
  */
 package org.beanfuse.security.portal.service.impl;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.beanfuse.commons.utils.persistence.impl.BaseServiceImpl;
-import org.beanfuse.security.*;
+import org.beanfuse.security.AuthorityObject;
+import org.beanfuse.security.model.*;
 import org.beanfuse.security.portal.dao.MenuAuthorityDao;
 import org.beanfuse.security.portal.model.Menu;
 import org.beanfuse.security.portal.model.MenuAuthority;
 import org.beanfuse.security.portal.model.MenuProfile;
 import org.beanfuse.security.portal.service.MenuAuthorityService;
 import org.beanfuse.security.service.UserService;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
 

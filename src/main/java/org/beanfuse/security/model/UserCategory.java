@@ -20,8 +20,7 @@ package org.beanfuse.security.model;
 
 import org.beanfuse.commons.model.pojo.LongIdObject;
 
-public class UserCategory extends LongIdObject
-    implements org.beanfuse.security.UserCategory {
+public class UserCategory extends LongIdObject {
 
   public String getName() {
     return name;

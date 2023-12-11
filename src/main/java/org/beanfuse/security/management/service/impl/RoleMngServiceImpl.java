@@ -19,7 +19,7 @@
 package org.beanfuse.security.management.service.impl;
 
 import org.beanfuse.commons.utils.persistence.impl.BaseServiceImpl;
-import org.beanfuse.security.Role;
+import org.beanfuse.security.model.Role;
 import org.beanfuse.security.management.ManagedRole;
 import org.beanfuse.security.management.RoleManager;
 import org.beanfuse.security.management.service.RoleMngService;
@@ -40,7 +40,7 @@ public class RoleMngServiceImpl extends BaseServiceImpl
     newRole.setCreateAt(new Date(System.currentTimeMillis()));
     newRole.setCreator(creator);
     creator.getMngRoles().add(newRole);
-    Role admin = (Role) utilDao.get(org.beanfuse.security.Role.class, Role.ADMIN_ID);
+    Role admin = (Role) utilDao.get(Role.class, Role.ADMIN_ID);
     RoleManager oneAdmin;
     for (Iterator iter = admin.getUsers().iterator(); iter.hasNext(); oneAdmin.getMngRoles().add(newRole))
       oneAdmin = (RoleManager) iter.next();

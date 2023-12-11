@@ -18,13 +18,14 @@
  */
 package org.beanfuse.security.service.impl;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.beanfuse.commons.utils.persistence.impl.BaseServiceImpl;
-import org.beanfuse.security.*;
+import org.beanfuse.security.AuthorityObject;
 import org.beanfuse.security.dao.AuthorityDao;
+import org.beanfuse.security.model.*;
 import org.beanfuse.security.service.AuthorityService;
 import org.beanfuse.security.service.ResourceService;
 import org.beanfuse.security.service.UserService;
-import org.apache.commons.collections.CollectionUtils;
 
 import java.util.*;
 

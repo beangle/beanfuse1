@@ -44,7 +44,7 @@ public class OnlineRecordAction extends SecurityBaseAction {
 
   protected void indexSetting(HttpServletRequest request)
       throws Exception {
-    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
   }
 
   public ActionForward search(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)

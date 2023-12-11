@@ -18,15 +18,17 @@
  */
 package org.beanfuse.security.web.action;
 
-import org.beanfuse.commons.lang.SeqStringUtil;
-import org.beanfuse.commons.web.dispatch.Action;
-import org.beanfuse.security.management.RoleManager;
-import org.beanfuse.security.management.UserManager;
-import org.beanfuse.security.service.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.beanfuse.commons.lang.SeqStringUtil;
+import org.beanfuse.commons.web.dispatch.Action;
+import org.beanfuse.security.management.RoleManager;
+import org.beanfuse.security.management.UserManager;
+import org.beanfuse.security.model.Role;
+import org.beanfuse.security.model.User;
+import org.beanfuse.security.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,8 +46,8 @@ public class ManagementAction extends SecurityBaseAction {
 
   public ActionForward editManagement(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
     Long userId = getLong(request, "user.id");
-    org.beanfuse.security.User manager = userService.get(getUserId(request));
-    org.beanfuse.security.User user = null;
+    User manager = userService.get(getUserId(request));
+    User user = null;
     if (null != userId && userId.intValue() != 0)
       user = userService.get(userId);
     if (null == user) {
@@ -60,12 +62,12 @@ public class ManagementAction extends SecurityBaseAction {
   public ActionForward saveManagement(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
       throws Exception {
     Long userId = getLong(request, "user.id");
-    org.beanfuse.security.User user = null;
+    User user = null;
     if (null != userId)
       user = userService.get(userId);
-    org.beanfuse.security.User manager = getUser(request);
-    manageUser((UserManager) manager, (UserManager) user, request.getParameter("userIds"));
-    manageRole((RoleManager) manager, (RoleManager) user, request.getParameter("roleIds"));
+    User manager = getUser(request);
+    manageUser(manager, user, request.getParameter("userIds"));
+    manageRole(manager, user, request.getParameter("roleIds"));
     userService.saveOrUpdate(user);
     return redirect(request, new Action(org.beanfuse.security.web.action.UserAction.class, "search"), "info.save.success");
   }
@@ -81,7 +83,7 @@ public class ManagementAction extends SecurityBaseAction {
   private void manageRole(RoleManager manager, RoleManager user, String roleIdSeq) {
     List roles = new ArrayList();
     if (StringUtils.isNotEmpty(roleIdSeq))
-      roles = utilService.load(org.beanfuse.security.Role.class, "id", SeqStringUtil.transformToLong(roleIdSeq));
+      roles = utilService.load(Role.class, "id", SeqStringUtil.transformToLong(roleIdSeq));
     user.getMngRoles().removeAll(manager.getMngRoles());
     user.getMngRoles().addAll(roles);
   }
@@ -92,13 +94,13 @@ public class ManagementAction extends SecurityBaseAction {
     if (StringUtils.isEmpty(userIdSeq))
       return forward(request, new Action(org.beanfuse.security.web.action.UserAction.class, "index"));
     Long userIds[] = SeqStringUtil.transformToLong(userIdSeq);
-    org.beanfuse.security.User manager = userService.get(getUserId(request));
+    User manager = userService.get(getUserId(request));
     List users = userService.getUsers(userIds);
     String removeWhat = request.getParameter("kind");
     if (removeWhat.equals("mngUsers") || removeWhat.equals("both"))
-      removeManageUser((UserManager) manager, users);
+      removeManageUser(manager, users);
     else if (removeWhat.equals("mngRoles") || removeWhat.equals("both"))
-      removeManageRole((RoleManager) manager, users);
+      removeManageRole(manager, users);
     return redirect(request, new Action(org.beanfuse.security.web.action.UserAction.class, "search"), "info.save.success");
   }
 

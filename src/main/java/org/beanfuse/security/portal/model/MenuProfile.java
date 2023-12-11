@@ -19,7 +19,7 @@
 package org.beanfuse.security.portal.model;
 
 import org.beanfuse.commons.model.pojo.LongIdObject;
-import org.beanfuse.security.UserCategory;
+import org.beanfuse.security.model.UserCategory;
 
 import java.util.ArrayList;
 import java.util.List;

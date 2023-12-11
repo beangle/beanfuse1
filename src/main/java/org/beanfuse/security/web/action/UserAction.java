@@ -26,7 +26,7 @@ import org.beanfuse.commons.query.OrderUtils;
 import org.beanfuse.commons.transfer.exporter.PropertyExtractor;
 import org.beanfuse.commons.utils.web.RequestUtils;
 import org.beanfuse.commons.web.dispatch.Action;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.management.ManagedUser;
 import org.beanfuse.security.management.RoleManager;
 import org.beanfuse.security.management.UserManager;
@@ -62,7 +62,7 @@ public class UserAction extends SecurityBaseAction {
 
   protected void indexSetting(HttpServletRequest request)
       throws Exception {
-    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
   }
 
   private EntityQuery buildUserQuery(HttpServletRequest request) {
@@ -140,7 +140,7 @@ public class UserAction extends SecurityBaseAction {
     if (null != user.getRoles())
       mngRoles.removeAll(user.getRoles());
     addCollection(request, "mngRoles", mngRoles);
-    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
   }
 
   public ActionForward remove(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
@@ -184,7 +184,7 @@ public class UserAction extends SecurityBaseAction {
   }
 
   protected String checkCategory(User user, Long categoryId) {
-    user.getCategories().add(utilService.get(org.beanfuse.security.UserCategory.class, categoryId));
+    user.getCategories().add(utilService.get(org.beanfuse.security.model.UserCategory.class, categoryId));
     return "";
   }
 

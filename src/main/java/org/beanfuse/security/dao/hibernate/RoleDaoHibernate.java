@@ -19,7 +19,7 @@
 package org.beanfuse.security.dao.hibernate;
 
 import org.beanfuse.commons.utils.persistence.hibernate.BaseDaoHibernate;
-import org.beanfuse.security.Role;
+import org.beanfuse.security.model.Role;
 import org.beanfuse.security.dao.RoleDao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -37,12 +37,12 @@ public class RoleDaoHibernate extends BaseDaoHibernate
   }
 
   public void remove(Long roleId) {
-    Role role = (Role) utilDao.get(org.beanfuse.security.Role.class, roleId);
+    Role role = (Role) utilDao.get(Role.class, roleId);
     utilDao.remove(role);
   }
 
   public List get(Long userIds[]) {
-    Criteria criteria = getSession().createCriteria(org.beanfuse.security.Role.class);
+    Criteria criteria = getSession().createCriteria(Role.class);
     criteria.add(Restrictions.in("id", userIds));
     return criteria.list();
   }

@@ -18,19 +18,19 @@
  */
 package org.beanfuse.security.dao;
 
-import org.beanfuse.security.Role;
+import org.beanfuse.security.model.Role;
 
 import java.util.List;
 
 public interface RoleDao {
 
-  public abstract Role get(Long long1);
+  Role get(Long long1);
 
-  public abstract List get(Long along[]);
+  List get(Long along[]);
 
-  public abstract void saveOrUpdate(Role role);
+  void saveOrUpdate(Role role);
 
-  public abstract void remove(Role role);
+  void remove(Role role);
 
-  public abstract void remove(Long long1);
+  void remove(Long long1);
 }

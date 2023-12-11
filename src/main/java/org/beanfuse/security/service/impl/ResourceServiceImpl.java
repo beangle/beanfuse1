@@ -21,7 +21,7 @@ package org.beanfuse.security.service.impl;
 import org.beanfuse.commons.query.Condition;
 import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.commons.utils.persistence.impl.BaseServiceImpl;
-import org.beanfuse.security.Resource;
+import org.beanfuse.security.model.Resource;
 import org.beanfuse.security.service.ResourceService;
 
 import java.util.Iterator;
@@ -34,7 +34,7 @@ public class ResourceServiceImpl extends BaseServiceImpl
   }
 
   public void updateState(Long resourceIds[], boolean isEnabled) {
-    EntityQuery query = new EntityQuery(org.beanfuse.security.Resource.class, "resource");
+    EntityQuery query = new EntityQuery(Resource.class, "resource");
     query.add(new Condition("resource.id in (:ids)", resourceIds));
     List resources = (List) utilDao.search(query);
     Resource resource;
@@ -45,7 +45,7 @@ public class ResourceServiceImpl extends BaseServiceImpl
   }
 
   public Resource getResource(String name) {
-    EntityQuery query = new EntityQuery(org.beanfuse.security.Resource.class, "resource");
+    EntityQuery query = new EntityQuery(Resource.class, "resource");
     query.add(new Condition("resource.name=:name", name));
     query.setCacheable(true);
     List resources = (List) utilDao.search(query);

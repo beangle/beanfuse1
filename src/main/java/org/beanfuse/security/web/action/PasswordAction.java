@@ -18,14 +18,14 @@
  */
 package org.beanfuse.security.web.action;
 
-import org.beanfuse.commons.model.predicate.ValidEntityKeyPredicate;
-import org.beanfuse.security.User;
-import org.beanfuse.security.service.UserService;
-import org.beanfuse.security.utils.EncryptUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.*;
 import org.apache.struts.util.MessageResources;
+import org.beanfuse.commons.model.predicate.ValidEntityKeyPredicate;
+import org.beanfuse.security.model.User;
+import org.beanfuse.security.service.UserService;
+import org.beanfuse.security.utils.EncryptUtil;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
@@ -106,9 +106,7 @@ public class PasswordAction extends SecurityBaseAction {
     Map valueMap = new HashMap(2);
     valueMap.put("password", pwd);
     valueMap.put("email", email);
-    utilService.update(org.beanfuse.security.User.class, "id", new Object[]{
-        userId
-    }, valueMap);
+    utilService.update(User.class, "id", new Object[]{userId}, valueMap);
     ActionMessage msg = new ActionMessage("info.password.changed");
     ActionMessages msgs = new ActionMessages();
     msgs.add("org.apache.struts.action.GLOBAL_MESSAGE", msg);
@@ -126,7 +124,7 @@ public class PasswordAction extends SecurityBaseAction {
       addErrors(request, actionMessages);
       return mapping.findForward("error");
     }
-    List userList = utilService.load(org.beanfuse.security.User.class, "name", name);
+    List userList = utilService.load(User.class, "name", name);
     User user = null;
     if (userList.isEmpty())
       return goErrorWithMessage(request, "error.user.notExist");

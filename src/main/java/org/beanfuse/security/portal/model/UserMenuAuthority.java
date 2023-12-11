@@ -18,7 +18,7 @@
  */
 package org.beanfuse.security.portal.model;
 
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.User;
 
 // Referenced classes of package org.beanfuse.security.portal.model:
 //            MenuAuthority, Menu

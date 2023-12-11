@@ -32,6 +32,6 @@ public class MenuProfileAction extends SecurityBaseAction {
 
   protected void editSetting(HttpServletRequest request, Entity entity)
       throws Exception {
-    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    addCollection(request, "categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
   }
 }

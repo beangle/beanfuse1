@@ -18,16 +18,16 @@
  */
 package org.beanfuse.security.web.action;
 
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
 import org.beanfuse.commons.lang.SeqStringUtil;
 import org.beanfuse.commons.model.Entity;
 import org.beanfuse.commons.query.Condition;
 import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.commons.query.Order;
-import org.beanfuse.security.Resource;
+import org.beanfuse.security.model.Resource;
 import org.beanfuse.security.service.ResourceService;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,14 +58,14 @@ public class ResourceAction extends SecurityBaseAction {
     List patterns = utilService.loadAll(org.beanfuse.security.restriction.RestrictionPattern.class);
     patterns.removeAll(resource.getPatterns());
     request.setAttribute("patterns", patterns);
-    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
   }
 
   protected ActionForward saveAndForward(HttpServletRequest request, Entity entity)
       throws Exception {
     Resource resource = (Resource) entity;
     if (null != resource) {
-      List list = utilService.load(org.beanfuse.security.Resource.class, "name", resource.getName());
+      List list = utilService.load(Resource.class, "name", resource.getName());
       int isUniqueFlag = 0;
       if (null != resource.getId())
         isUniqueFlag = 1;
@@ -79,7 +79,7 @@ public class ResourceAction extends SecurityBaseAction {
     resource.getPatterns().clear();
     resource.getPatterns().addAll(patterns);
     String categoryIds[] = request.getParameterValues("categoryIds");
-    List categories = utilService.load(org.beanfuse.security.Resource.class, "id", SeqStringUtil.transformToLong(categoryIds));
+    List categories = utilService.load(Resource.class, "id", SeqStringUtil.transformToLong(categoryIds));
     resource.getCategories().clear();
     resource.getCategories().addAll(categories);
     utilService.saveOrUpdate(resource);
@@ -97,7 +97,7 @@ public class ResourceAction extends SecurityBaseAction {
     List menus = (List) utilService.search(query);
     request.setAttribute(shortName, entity);
     request.setAttribute("menus", menus);
-    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+    request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
     return forward(request);
   }
 

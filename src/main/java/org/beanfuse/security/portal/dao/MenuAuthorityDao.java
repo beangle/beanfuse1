@@ -18,9 +18,9 @@
  */
 package org.beanfuse.security.portal.dao;
 
-import org.beanfuse.security.Authority;
-import org.beanfuse.security.Role;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.Authority;
+import org.beanfuse.security.model.Role;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.portal.model.Menu;
 import org.beanfuse.security.portal.model.MenuAuthority;
 import org.beanfuse.security.portal.model.MenuProfile;

@@ -3,7 +3,7 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class name="org.beanfuse.security.model.UserCategory"
-    entity-name="org.beanfuse.security.UserCategory" table="XTQX_YHLB_T">
+    entity-name="org.beanfuse.security.model.UserCategory" table="XTQX_YHLB_T">
     <cache usage="read-write"/>
     <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">

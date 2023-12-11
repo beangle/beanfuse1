@@ -4,8 +4,7 @@
    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="org.beanfuse.security.model.Role"
-    entity-name="org.beanfuse.security.Role" table="XTQX_JS_T">
+  <class name="org.beanfuse.security.model.Role" table="XTQX_JS_T">
     <cache usage="read-write"/>
     <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">
@@ -16,7 +15,7 @@
       not-null="true"/>
     <property name="remark" column="JSMS" length="500"/>
 
-    <many-to-one name="creator" column="CJRID" not-null="true" entity-name="org.beanfuse.security.User"/>
+    <many-to-one name="creator" column="CJRID" not-null="true" entity-name="org.beanfuse.security.model.User"/>
     <many-to-one name="category" column="YHLBID"  not-null="true"/>
     <property name="createAt" column="CJSJ" not-null="true"/>
     <property name="modifyAt" column="XGSJ" not-null="true"/>
@@ -24,17 +23,17 @@
 
     <set name="users" table="XTQX_YHJS_T">
       <key column="JSID"/>
-      <many-to-many column="YHID" class="org.beanfuse.security.User"/>
+      <many-to-many column="YHID" class="org.beanfuse.security.model.User"/>
     </set>
     <set name="managers" table="XTQX_FJGL_JS_T">
       <key column="JSID"/>
-      <many-to-many column="YHID" class="org.beanfuse.security.User"/>
+      <many-to-many column="YHID" class="org.beanfuse.security.model.User"/>
     </set>
 
     <set name="authorities" inverse="true" table="XTQX_JSQX_T"
       cascade="all,delete-orphan">
       <key column="JSID" not-null="true"/>
-      <one-to-many class="org.beanfuse.security.RoleAuthority"/>
+      <one-to-many class="org.beanfuse.security.model.RoleAuthority"/>
     </set>
 
     <set name="menuAuthorities" inverse="true" table="XTQX_JSMK_T"

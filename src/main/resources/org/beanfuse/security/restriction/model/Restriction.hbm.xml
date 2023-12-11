@@ -1,82 +1,79 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
   <!--用户限制-->
   <class name="org.beanfuse.security.restriction.model.Restriction"
-    entity-name="org.beanfuse.security.restriction.UserRestriction"
-    table="XTQX_XZQX_YH_T">
+         entity-name="org.beanfuse.security.restriction.UserRestriction"
+         table="XTQX_XZQX_YH_T">
     <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">
         <param name="sequence">SEQ_XTQX_XZQX_YH_T</param>
       </generator>
     </id>
-    <property name="enabled" column="SFKY" not-null="true" />
+    <property name="enabled" column="SFKY" not-null="true"/>
     <set name="items" cascade="all,delete-orphan">
-      <key column="XZQXID" />
-      <one-to-many
-        entity-name="org.beanfuse.security.restriction.UserRestrictionItem" />
+      <key column="XZQXID"/>
+      <one-to-many entity-name="org.beanfuse.security.restriction.UserRestrictionItem"/>
     </set>
-    <many-to-one name="holder" column="YHID"
-      entity-name="org.beanfuse.security.User" />
-    <many-to-one name="pattern" column="XZMSID" not-null="true" />
+    <many-to-one name="holder" column="YHID" entity-name="org.beanfuse.security.model.User"/>
+    <many-to-one name="pattern" column="XZMSID" not-null="true"/>
   </class>
   <!--角色限制-->
   <class name="org.beanfuse.security.restriction.model.Restriction"
-    entity-name="org.beanfuse.security.restriction.RoleRestriction"
-    table="XTQX_XZQX_JS_T">
+         entity-name="org.beanfuse.security.restriction.RoleRestriction"
+         table="XTQX_XZQX_JS_T">
     <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">
         <param name="sequence">SEQ_XTQX_XZQX_JS_T</param>
       </generator>
     </id>
-    <property name="enabled" column="SFKY" not-null="true" />
+    <property name="enabled" column="SFKY" not-null="true"/>
     <set name="items" cascade="all,delete-orphan">
-      <key column="XZQXID" />
+      <key column="XZQXID"/>
       <one-to-many
-        entity-name="org.beanfuse.security.restriction.RoleRestrictionItem" />
+          entity-name="org.beanfuse.security.restriction.RoleRestrictionItem"/>
     </set>
-    <many-to-one name="holder" column="JSID"
-      entity-name="org.beanfuse.security.Role" />
-    <many-to-one name="pattern" column="XZMSID" not-null="true" />
+    <many-to-one name="holder" column="JSID" entity-name="org.beanfuse.security.model.Role"/>
+    <many-to-one name="pattern" column="XZMSID" not-null="true"/>
   </class>
   <!--用户权限限制-->
   <class name="org.beanfuse.security.restriction.model.Restriction"
-    entity-name="org.beanfuse.security.restriction.UserAuthorityRestriction"
-    table="XTQX_XZQX_YHQX_T">
+         entity-name="org.beanfuse.security.restriction.UserAuthorityRestriction"
+         table="XTQX_XZQX_YHQX_T">
     <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">
         <param name="sequence">SEQ_XTQX_XZQX_YHQX_T</param>
       </generator>
     </id>
-    <property name="enabled" column="SFKY" not-null="true" />
+    <property name="enabled" column="SFKY" not-null="true"/>
     <set name="items" cascade="all,delete-orphan">
-      <key column="XZQXID" />
+      <key column="XZQXID"/>
       <one-to-many
-        entity-name="org.beanfuse.security.restriction.UserAuthorityRestrictionItem" />
+          entity-name="org.beanfuse.security.restriction.UserAuthorityRestrictionItem"/>
     </set>
     <many-to-one name="holder" column="YHQXID"
-      entity-name="org.beanfuse.security.UserAuthority" />
-    <many-to-one name="pattern" column="XZMSID" not-null="true" />
+                 entity-name="org.beanfuse.security.model.UserAuthority"/>
+    <many-to-one name="pattern" column="XZMSID" not-null="true"/>
   </class>
   <!--角色权限限制-->
   <class name="org.beanfuse.security.restriction.model.Restriction"
-    entity-name="org.beanfuse.security.restriction.RoleAuthorityRestriction"
-    table="XTQX_XZQX_JSQX_T">
+         entity-name="org.beanfuse.security.restriction.RoleAuthorityRestriction"
+         table="XTQX_XZQX_JSQX_T">
     <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">
         <param name="sequence">SEQ_XTQX_XZQX_JSQX_T</param>
       </generator>
     </id>
-    <property name="enabled" column="SFKY" not-null="true" />
+    <property name="enabled" column="SFKY" not-null="true"/>
     <set name="items" cascade="all,delete-orphan">
-      <key column="XZQXID" />
+      <key column="XZQXID"/>
       <one-to-many
-        entity-name="org.beanfuse.security.restriction.RoleAuthorityRestrictionItem" />
+          entity-name="org.beanfuse.security.restriction.RoleAuthorityRestrictionItem"/>
     </set>
     <many-to-one name="holder" column="JSQXID"
-      entity-name="org.beanfuse.security.RoleAuthority" />
-    <many-to-one name="pattern" column="XZMSID" not-null="true" />
+                 entity-name="org.beanfuse.security.model.RoleAuthority"/>
+    <many-to-one name="pattern" column="XZMSID" not-null="true"/>
   </class>
 </hibernate-mapping>

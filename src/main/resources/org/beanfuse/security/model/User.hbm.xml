@@ -1,73 +1,67 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="org.beanfuse.security.model.User"
-    entity-name="org.beanfuse.security.User" table="XTQX_YH_T">
+  <class name="org.beanfuse.security.model.User" table="XTQX_YH_T">
     <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">
         <param name="sequence">SEQ_XTQX_YH_T</param>
       </generator>
     </id>
     <property name="name" column="YHMC" not-null="true" unique="true"
-      length="50"/>
+              length="50"/>
     <property name="userName" column="YHXM" length="40" not-null="true"/>
     <property name="password" column="MM" not-null="true" length="255"/>
     <property name="state" column="ZT" not-null="true"/>
     <property name="email" column="EMAIL" length="100" not-null="true"/>
 
     <many-to-one name="creator" column="CJRID"
-      entity-name="org.beanfuse.security.User"/>
+                 entity-name="org.beanfuse.security.model.User"/>
     <property name="createAt" column="CJSJ" not-null="true"/>
     <property name="modifyAt" column="XGSJ" not-null="true"/>
     <property name="remark" column="BZ" length="500"/>
 
-    <many-to-one name="defaultCategory" column="MRYHLBID"  not-null="true"/>
+    <many-to-one name="defaultCategory" column="MRYHLBID" not-null="true"/>
     <set name="categories" table="XTQX_YH_LB_T">
       <key column="YHID"/>
-      <many-to-many column="LBID"
-        class="org.beanfuse.security.UserCategory"/>
+      <many-to-many column="LBID" class="org.beanfuse.security.model.UserCategory"/>
     </set>
     <set name="roles" table="XTQX_YHJS_T">
       <key column="YHID"/>
-      <many-to-many column="JSID"
-        class="org.beanfuse.security.Role"/>
+      <many-to-many column="JSID" class="org.beanfuse.security.model.Role"/>
     </set>
 
     <set name="mngRoles" table="XTQX_FJGL_JS_T">
       <key column="YHID"/>
-      <many-to-many column="JSID"
-        class="org.beanfuse.security.Role"/>
+      <many-to-many column="JSID" class="org.beanfuse.security.model.Role"/>
     </set>
 
     <set name="mngUsers" table="XTQX_FJGL_YH_T">
       <key column="YHID"/>
-      <many-to-many column="SGLYHID"
-        class="org.beanfuse.security.User"/>
+      <many-to-many column="SGLYHID" class="org.beanfuse.security.model.User"/>
     </set>
 
     <set name="managers" table="XTQX_FJGL_YH_T">
       <key column="SGLYHID"/>
-      <many-to-many column="YHID"
-        class="org.beanfuse.security.User"/>
+      <many-to-many column="YHID" class="org.beanfuse.security.model.User"/>
     </set>
 
     <set name="authorities" inverse="true" table="XTQX_YHQX_T"
-      cascade="all,delete-orphan">
+         cascade="all,delete-orphan">
       <key column="YHID" not-null="true"/>
-      <one-to-many class="org.beanfuse.security.UserAuthority"/>
+      <one-to-many class="org.beanfuse.security.model.UserAuthority"/>
     </set>
 
     <set name="menuAuthorities" inverse="true" table="XTQX_YHMK_T"
-      cascade="all,delete-orphan">
+         cascade="all,delete-orphan">
       <key column="YHID" not-null="true"/>
       <one-to-many
-        class="org.beanfuse.security.portal.model.UserMenuAuthority"/>
+          class="org.beanfuse.security.portal.model.UserMenuAuthority"/>
     </set>
 
     <set name="restrictions" table="XTQX_XZQX_YH_T" inverse="true"
-      cascade="all,delete-orphan">
+         cascade="all,delete-orphan">
       <key column="YHID"/>
       <one-to-many class="org.beanfuse.security.restriction.UserRestriction"/>
     </set>

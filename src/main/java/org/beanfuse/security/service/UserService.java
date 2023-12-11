@@ -19,7 +19,7 @@
 package org.beanfuse.security.service;
 
 import org.beanfuse.commons.model.pojo.PojoExistException;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.dao.UserDao;
 
 import java.util.List;

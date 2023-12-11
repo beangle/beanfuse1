@@ -23,8 +23,7 @@ import org.beanfuse.commons.query.Condition;
 import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.commons.web.dispatch.Action;
 import org.beanfuse.security.*;
-import org.beanfuse.security.model.RoleAuthority;
-import org.beanfuse.security.model.UserAuthority;
+import org.beanfuse.security.model.*;
 import org.beanfuse.security.portal.model.*;
 import org.beanfuse.security.portal.service.MenuAuthorityService;
 import org.beanfuse.security.service.AuthorityDecisionService;
@@ -77,7 +76,7 @@ public class MenuAuthorityAction extends SecurityBaseAction {
       Long adminId = getUserId(request);
       if (adminId.longValue() == User.ADMIN_ID.longValue()) {
         menus = menuProfile.getMenus();
-        resources = utilService.loadAll(org.beanfuse.security.Resource.class);
+        resources = utilService.loadAll(Resource.class);
       } else {
         menus = menuAuthorityService.getMenus(menuProfile, user);
         resources = authorityService.getResources(adminId);
@@ -118,9 +117,9 @@ public class MenuAuthorityAction extends SecurityBaseAction {
       throws Exception {
     MenuAuthorityObject mao = getAuthorityObject(request);
     boolean forUser = mao instanceof User;
-    MenuProfile menuProfile = (MenuProfile) utilService.get(org.beanfuse.security.portal.model.MenuProfile.class, getLong(request, "menuProfileId"));
-    Set newMenus = new HashSet(utilService.load(org.beanfuse.security.portal.model.Menu.class, "id", SeqStringUtil.transformToLong(request.getParameterValues("menuId"))));
-    Set newResources = new HashSet(utilService.load(org.beanfuse.security.Resource.class, "id", SeqStringUtil.transformToLong(request.getParameterValues("resourceId"))));
+    MenuProfile menuProfile = (MenuProfile) utilService.get(MenuProfile.class, getLong(request, "menuProfileId"));
+    Set newMenus = new HashSet(utilService.load(Menu.class, "id", SeqStringUtil.transformToLong(request.getParameterValues("menuId"))));
+    Set newResources = new HashSet(utilService.load(Resource.class, "id", SeqStringUtil.transformToLong(request.getParameterValues("resourceId"))));
     User manager = getUser(request);
     Set mngMenus = null;
     Set mngResources = new HashSet();

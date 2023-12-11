@@ -18,20 +18,19 @@
  */
 package org.beanfuse.security.model;
 
-import org.beanfuse.security.UserCategory;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.beanfuse.security.model.UserCategory;
 import org.beanfuse.security.management.ManagedRole;
 import org.beanfuse.security.management.RoleManager;
 import org.beanfuse.security.portal.model.MenuAuthorityObject;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
 
-// Referenced classes of package org.beanfuse.security.model:
-//            AbstractAuthorityObject
-
 public class Role extends AbstractAuthorityObject
-    implements org.beanfuse.security.Role, ManagedRole, MenuAuthorityObject {
+    implements ManagedRole, MenuAuthorityObject {
+
+  public static final Long ADMIN_ID = 1L;
 
   public Role() {
     users = new HashSet();

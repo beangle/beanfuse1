@@ -18,7 +18,7 @@
  */
 package org.beanfuse.security.dao;
 
-import org.beanfuse.security.Authority;
+import org.beanfuse.security.model.Authority;
 
 import java.util.List;
 

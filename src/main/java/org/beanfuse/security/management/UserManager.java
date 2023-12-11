@@ -22,12 +22,11 @@ import org.beanfuse.commons.model.LongIdEntity;
 
 import java.util.Set;
 
-public interface UserManager
-    extends LongIdEntity {
+public interface UserManager extends LongIdEntity {
 
-  public abstract Set getMngUsers();
+  Set getMngUsers();
 
-  public abstract void setMngUsers(Set set);
+  void setMngUsers(Set set);
 
-  public abstract boolean isUserAdmin();
+  boolean isUserAdmin();
 }

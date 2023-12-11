@@ -1,16 +1,28 @@
-<?xml version="1.0"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"><hibernate-mapping>  <class name="org.beanfuse.security.portal.model.Menu"
-    table="XTQX_MK_T">    <cache usage="read-write" />    <id name="id" column="ID" unsaved-value="null">
+<?xml version="1.0"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="org.beanfuse.security.portal.model.Menu" table="XTQX_MK_T">
+    <cache usage="read-write"/>
+    <id name="id" column="ID" unsaved-value="null">
       <generator class="sequence">
         <param name="sequence">SEQ_XTQX_MK_T</param>
       </generator>
     </id>
-    <many-to-one name="profile" column="MKPZID" not-null="true" />    <property name="code" column="MKDM" length="32" not-null="true" />
+    <many-to-one name="profile" column="MKPZID" not-null="true"/>
+    <property name="code" column="MKDM" length="32" not-null="true"/>
 
     <property name="title" column="MKBT" length="100"
-      not-null="true" />    <property name="engTitle" column="MKBT_EN" length="100"
-      not-null="true" />    <property name="description" column="MKJJ" length="100" />    <property name="entry" column="RKDZ" />    <property name="enabled" column="SFKY" not-null="true" />    <set name="resources" table="XTQX_MK_ZY_T" batch-size="16">
-      <cache usage="read-write" />
-      <key column="MKID" />
+              not-null="true"/>
+    <property name="engTitle" column="MKBT_EN" length="100"
+              not-null="true"/>
+    <property name="description" column="MKJJ" length="100"/>
+    <property name="entry" column="RKDZ"/>
+    <property name="enabled" column="SFKY" not-null="true"/>
+    <set name="resources" table="XTQX_MK_ZY_T" batch-size="16">
+      <cache usage="read-write"/>
+      <key column="MKID"/>
       <many-to-many
-        class="org.beanfuse.security.Resource" column="ZYID" />
-    </set>  </class></hibernate-mapping>
+          class="org.beanfuse.security.model.Resource" column="ZYID"/>
+    </set>
+  </class>
+</hibernate-mapping>

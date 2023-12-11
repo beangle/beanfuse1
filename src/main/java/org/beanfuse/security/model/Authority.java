@@ -16,16 +16,27 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.beanfuse.security;
+package org.beanfuse.security.model;
 
+import org.beanfuse.commons.model.LongIdEntity;
+import org.beanfuse.security.AuthorityObject;
 
-// Referenced classes of package org.beanfuse.security:
-//            Authority, Role
+public interface Authority
+    extends LongIdEntity, Cloneable {
 
-public interface RoleAuthority
-    extends Authority {
+  public abstract Resource getResource();
 
-  public abstract Role getRole();
+  public abstract void setResource(Resource resource);
 
-  public abstract void setRole(Role role);
+  public abstract void setAuthorityObject(AuthorityObject authorityobject);
+
+  public abstract AuthorityObject getAuthorityObject();
+
+  public abstract boolean isEnabled();
+
+  public abstract void setEnabled(boolean flag);
+
+  public abstract void merge(Authority authority);
+
+  public abstract Object clone();
 }

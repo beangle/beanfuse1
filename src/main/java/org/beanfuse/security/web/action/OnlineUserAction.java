@@ -20,7 +20,7 @@ package org.beanfuse.security.web.action;
 
 import org.beanfuse.commons.bean.comparators.PropertyComparator;
 import org.beanfuse.commons.query.limit.PageAdapter;
-import org.beanfuse.security.UserCategory;
+import org.beanfuse.security.model.UserCategory;
 import org.beanfuse.security.concurrent.category.CategorySessionController;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
@@ -51,7 +51,7 @@ public class OnlineUserAction extends SecurityBaseAction {
     request.setAttribute("onlineCount", new Integer(sessionController.getOnlineCount()));
     Map maxMap = new HashMap();
     Map onlineMap = new HashMap();
-    List categories = utilService.loadAll(org.beanfuse.security.UserCategory.class);
+    List categories = utilService.loadAll(org.beanfuse.security.model.UserCategory.class);
     Map categoryMap = new HashMap();
     UserCategory category;
     for (Iterator iterator = categories.iterator(); iterator.hasNext(); categoryMap.put(category.getId().toString(), category)) {
@@ -68,7 +68,7 @@ public class OnlineUserAction extends SecurityBaseAction {
 
   public ActionForward save(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
       throws Exception {
-    List categories = utilService.loadAll(org.beanfuse.security.UserCategory.class);
+    List categories = utilService.loadAll(org.beanfuse.security.model.UserCategory.class);
     Long categoryId;
     int max;
     for (Iterator iterator = categories.iterator(); iterator.hasNext(); sessionController.setMax(categoryId, max)) {

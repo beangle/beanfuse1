@@ -19,8 +19,8 @@
 package org.beanfuse.security.dao.hibernate;
 
 import org.beanfuse.commons.utils.persistence.hibernate.BaseDaoHibernate;
-import org.beanfuse.security.User;
 import org.beanfuse.security.dao.UserDao;
+import org.beanfuse.security.model.User;
 import org.hibernate.Query;
 
 import java.util.List;

@@ -18,16 +18,9 @@
  */
 package org.beanfuse.security.model;
 
-import org.beanfuse.security.Authority;
 import org.beanfuse.security.AuthorityObject;
-import org.beanfuse.security.Resource;
-import org.beanfuse.security.Role;
 
-// Referenced classes of package org.beanfuse.security.model:
-//            AbstractAuthority
-
-public class RoleAuthority extends AbstractAuthority
-    implements org.beanfuse.security.RoleAuthority {
+public class RoleAuthority extends AbstractAuthority{
 
   public RoleAuthority() {
   }

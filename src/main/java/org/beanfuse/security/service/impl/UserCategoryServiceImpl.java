@@ -30,6 +30,6 @@ public class UserCategoryServiceImpl extends BaseServiceImpl
   }
 
   public List getCategories() {
-    return utilDao.loadAll(org.beanfuse.security.UserCategory.class);
+    return utilDao.loadAll(org.beanfuse.security.model.UserCategory.class);
   }
 }

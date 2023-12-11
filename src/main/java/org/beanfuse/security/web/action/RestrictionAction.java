@@ -18,14 +18,14 @@
  */
 package org.beanfuse.security.web.action;
 
-import org.beanfuse.commons.bean.comparators.PropertyComparator;
-import org.beanfuse.commons.lang.SeqStringUtil;
-import org.beanfuse.security.Authority;
-import org.beanfuse.security.restriction.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.beanfuse.commons.bean.comparators.PropertyComparator;
+import org.beanfuse.commons.lang.SeqStringUtil;
+import org.beanfuse.security.model.*;
+import org.beanfuse.security.restriction.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,13 +58,13 @@ public class RestrictionAction extends SecurityBaseAction {
     String restrictionType = get(request, "restrictionType");
     RestrictionHolder holer = null;
     if ("user".equals(restrictionType))
-      holer = (RestrictionHolder) utilService.get(org.beanfuse.security.User.class, restrictionHolderId);
+      holer = (RestrictionHolder) utilService.get(User.class, restrictionHolderId);
     else if ("role".equals(restrictionType))
-      holer = (RestrictionHolder) utilService.get(org.beanfuse.security.Role.class, restrictionHolderId);
+      holer = (RestrictionHolder) utilService.get(Role.class, restrictionHolderId);
     else if ("userAuthority".equals(restrictionType))
-      holer = (RestrictionHolder) utilService.get(org.beanfuse.security.UserAuthority.class, restrictionHolderId);
+      holer = (RestrictionHolder) utilService.get(UserAuthority.class, restrictionHolderId);
     else
-      holer = (RestrictionHolder) utilService.get(org.beanfuse.security.RoleAuthority.class, restrictionHolderId);
+      holer = (RestrictionHolder) utilService.get(RoleAuthority.class, restrictionHolderId);
     return holer;
   }
 

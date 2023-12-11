@@ -18,7 +18,7 @@
  */
 package org.beanfuse.security.service;
 
-import org.beanfuse.security.Resource;
+import org.beanfuse.security.model.Resource;
 
 public interface ResourceService {
 

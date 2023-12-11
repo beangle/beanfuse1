@@ -19,8 +19,6 @@
 package org.beanfuse.security.model;
 
 import org.beanfuse.commons.model.pojo.LongIdObject;
-import org.beanfuse.security.Authority;
-import org.beanfuse.security.Resource;
 import org.beanfuse.security.restriction.RestrictionHolder;
 
 import java.util.Set;

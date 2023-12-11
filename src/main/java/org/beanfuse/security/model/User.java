@@ -18,22 +18,23 @@
  */
 package org.beanfuse.security.model;
 
-import org.beanfuse.security.UserCategory;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.beanfuse.security.model.UserCategory;
 import org.beanfuse.security.management.ManagedUser;
 import org.beanfuse.security.management.RoleManager;
 import org.beanfuse.security.management.UserManager;
 import org.beanfuse.security.portal.model.MenuAuthorityObject;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-// Referenced classes of package org.beanfuse.security.model:
-//            AbstractAuthorityObject, Role
-
 public class User extends AbstractAuthorityObject
-    implements org.beanfuse.security.User, UserManager, RoleManager, ManagedUser, MenuAuthorityObject {
+    implements UserManager, RoleManager, ManagedUser, MenuAuthorityObject {
+
+
+  public static final String DEFAULT_PASSWORD = "1";
+  public static final Long ADMIN_ID = 1L;
 
   public User() {
     roles = new HashSet();

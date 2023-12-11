@@ -20,7 +20,7 @@ package org.beanfuse.security.service.impl;
 
 import org.beanfuse.commons.model.pojo.PojoExistException;
 import org.beanfuse.commons.utils.persistence.impl.BaseServiceImpl;
-import org.beanfuse.security.Role;
+import org.beanfuse.security.model.Role;
 import org.beanfuse.security.dao.RoleDao;
 import org.beanfuse.security.service.RoleService;
 

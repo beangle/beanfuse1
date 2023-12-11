@@ -19,7 +19,7 @@
 package org.beanfuse.security.dao.hibernate;
 
 import org.beanfuse.commons.utils.persistence.UtilDao;
-import org.beanfuse.security.Authority;
+import org.beanfuse.security.model.Authority;
 import org.beanfuse.security.dao.AuthorityDao;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;

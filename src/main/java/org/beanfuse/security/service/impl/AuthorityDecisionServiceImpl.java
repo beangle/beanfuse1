@@ -19,7 +19,7 @@
 package org.beanfuse.security.service.impl;
 
 import org.beanfuse.commons.utils.persistence.impl.BaseServiceImpl;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.service.AuthorityDecisionService;
 import org.beanfuse.security.service.AuthorityService;
 import org.beanfuse.security.service.UserService;
@@ -60,7 +60,7 @@ public class AuthorityDecisionServiceImpl extends BaseServiceImpl
   }
 
   public void registerAuthorities(Long userId) {
-    User user = (User) utilDao.get(org.beanfuse.security.User.class, userId);
+    User user = (User) utilDao.get(User.class, userId);
     List ua = authorityService.getUserResourceNames(user.getId());
     if (!ua.isEmpty()) {
       userAuthorities.put(userId, new HashSet(ua));

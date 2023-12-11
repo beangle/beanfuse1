@@ -18,14 +18,13 @@
  */
 package org.beanfuse.security.model;
 
-import org.beanfuse.commons.model.pojo.LongIdObject;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.beanfuse.commons.model.pojo.LongIdObject;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Resource extends LongIdObject
-    implements org.beanfuse.security.Resource {
+public class Resource extends LongIdObject {
 
   public Resource() {
     patterns = new HashSet();

@@ -21,7 +21,7 @@ package org.beanfuse.security.web.action;
 import org.beanfuse.commons.query.Condition;
 import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.security.AuthenticationException;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.portal.model.MenuProfile;
 import org.beanfuse.security.portal.service.MenuAuthorityService;
 import org.apache.commons.lang.StringUtils;
@@ -56,7 +56,7 @@ public class HomeAction extends SecurityBaseAction {
       List dd = menuAuthorityService.getMenuAuthorities(mp, user, 1, "");
       request.setAttribute("menus", dd);
       request.setAttribute("user", user);
-      request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.UserCategory.class));
+      request.setAttribute("categories", utilService.loadAll(org.beanfuse.security.model.UserCategory.class));
       return forward(request);
     }
   }

@@ -23,8 +23,8 @@ import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.commons.utils.web.RequestUtils;
 import org.beanfuse.security.AuthenticationException;
 import org.beanfuse.security.AuthorityException;
-import org.beanfuse.security.Resource;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.Resource;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.restriction.PatternParam;
 import org.beanfuse.security.restriction.Restriction;
 import org.beanfuse.security.restriction.RestrictionItem;
@@ -158,7 +158,7 @@ public class SecurityBaseAction extends ExampleAction {
   }
 
   protected User getUser(HttpServletRequest request) {
-    return (User) utilService.get(org.beanfuse.security.User.class, getUserId(request));
+    return (User) utilService.get(User.class, getUserId(request));
   }
 
   public void setAuthorityService(AuthorityService authorityService) {

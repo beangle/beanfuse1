@@ -22,8 +22,8 @@ import org.beanfuse.commons.model.pojo.PojoExistException;
 import org.beanfuse.commons.query.Condition;
 import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.commons.utils.persistence.impl.BaseServiceImpl;
-import org.beanfuse.security.Role;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.Role;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.dao.UserDao;
 import org.beanfuse.security.service.UserService;
 import org.apache.commons.lang.StringUtils;
@@ -56,7 +56,7 @@ public class UserServiceImpl extends BaseServiceImpl
   public User get(String loginName) {
     if (StringUtils.isEmpty(loginName))
       return null;
-    EntityQuery entityQuery = new EntityQuery(org.beanfuse.security.User.class, "user");
+    EntityQuery entityQuery = new EntityQuery(User.class, "user");
     entityQuery.add(new Condition("user.name=:name", loginName));
     Collection users = utilService.search(entityQuery);
     if (users.isEmpty())

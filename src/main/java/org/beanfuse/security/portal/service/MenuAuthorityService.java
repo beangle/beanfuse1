@@ -19,8 +19,8 @@
 package org.beanfuse.security.portal.service;
 
 import org.beanfuse.security.AuthorityObject;
-import org.beanfuse.security.Role;
-import org.beanfuse.security.User;
+import org.beanfuse.security.model.Role;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.portal.dao.MenuAuthorityDao;
 import org.beanfuse.security.portal.model.Menu;
 import org.beanfuse.security.portal.model.MenuAuthority;
@@ -33,39 +33,39 @@ import java.util.Set;
 
 public interface MenuAuthorityService {
 
-  public abstract MenuAuthority getUserMenuAuthority(User user, Menu menu);
+  MenuAuthority getUserMenuAuthority(User user, Menu menu);
 
-  public abstract List getMenuAuthorities(MenuProfile menuprofile, User user);
+  List getMenuAuthorities(MenuProfile menuprofile, User user);
 
-  public abstract List getMenuAuthorities(MenuProfile menuprofile, User user, int i, String s);
+  List getMenuAuthorities(MenuProfile menuprofile, User user, int i, String s);
 
-  public abstract List getUserMenuAuthorities(MenuProfile menuprofile, User user);
+  List getUserMenuAuthorities(MenuProfile menuprofile, User user);
 
-  public abstract List getUserMenuAuthorities(MenuProfile menuprofile, User user, int i, String s);
+  List getUserMenuAuthorities(MenuProfile menuprofile, User user, int i, String s);
 
-  public abstract MenuAuthority getRoleMenuAuthority(Role role, Menu menu);
+  MenuAuthority getRoleMenuAuthority(Role role, Menu menu);
 
-  public abstract List getRoleMenuAuthorities(MenuProfile menuprofile, Role role, int i, String s);
+  List getRoleMenuAuthorities(MenuProfile menuprofile, Role role, int i, String s);
 
-  public abstract List getRoleMenuAuthorities(MenuProfile menuprofile, Role role, int i);
+  List getRoleMenuAuthorities(MenuProfile menuprofile, Role role, int i);
 
-  public abstract List getRoleMenuAuthorities(MenuProfile menuprofile, Role role);
+  List getRoleMenuAuthorities(MenuProfile menuprofile, Role role);
 
-  public abstract List getMenus(MenuProfile menuprofile, User user);
+  List getMenus(MenuProfile menuprofile, User user);
 
-  public abstract List getMenus(MenuProfile menuprofile, User user, int i, String s);
+  List getMenus(MenuProfile menuprofile, User user, int i, String s);
 
-  public abstract List getUserMenus(MenuProfile menuprofile, User user);
+  List getUserMenus(MenuProfile menuprofile, User user);
 
-  public abstract List getRoleMenus(MenuProfile menuprofile, Role role);
+  List getRoleMenus(MenuProfile menuprofile, Role role);
 
-  public abstract void saveOrUpdate(MenuAuthority menuauthority);
+  void saveOrUpdate(MenuAuthority menuauthority);
 
-  public abstract void authorize(AuthorityObject authorityobject, Set set, Class class1);
+  void authorize(AuthorityObject authorityobject, Set set, Class class1);
 
-  public abstract void copyAuthority(MenuProfile menuprofile, Role role, Collection collection);
+  void copyAuthority(MenuProfile menuprofile, Role role, Collection collection);
 
-  public abstract void setMenuAuthorityDao(MenuAuthorityDao menuauthoritydao);
+  void setMenuAuthorityDao(MenuAuthorityDao menuauthoritydao);
 
-  public abstract void setUserService(UserService userservice);
+  void setUserService(UserService userservice);
 }

@@ -19,18 +19,18 @@
 package org.beanfuse.security.monitor.providers;
 
 import org.beanfuse.commons.utils.web.RequestUtils;
-import org.beanfuse.security.*;
+import org.beanfuse.security.Authentication;
+import org.beanfuse.security.AuthenticationException;
+import org.beanfuse.security.BadCredentialsException;
+import org.beanfuse.security.UserDetails;
+import org.beanfuse.security.model.User;
 import org.beanfuse.security.monitor.providers.encoding.PasswordEncoder;
 import org.beanfuse.security.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-// Referenced classes of package org.beanfuse.security.monitor.providers:
-//            AuthenticationProvider
-
-public class DaoUserProvider
-    implements AuthenticationProvider {
+public class DaoUserProvider implements AuthenticationProvider {
 
   public DaoUserProvider() {
   }

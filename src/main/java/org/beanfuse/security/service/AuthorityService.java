@@ -18,10 +18,10 @@
  */
 package org.beanfuse.security.service;
 
-import org.beanfuse.security.Authority;
+import org.beanfuse.security.model.Authority;
 import org.beanfuse.security.AuthorityObject;
-import org.beanfuse.security.Resource;
-import org.beanfuse.security.Role;
+import org.beanfuse.security.model.Resource;
+import org.beanfuse.security.model.Role;
 import org.beanfuse.security.dao.AuthorityDao;
 
 import java.util.Collection;

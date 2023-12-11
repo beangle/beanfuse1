@@ -23,8 +23,6 @@ import org.beanfuse.commons.model.pojo.LongIdObject;
 import java.util.HashSet;
 import java.util.Set;
 
-// Referenced classes of package org.beanfuse.security.portal.model:
-//            MenuProfile
 
 public class Menu extends LongIdObject
     implements Comparable {
@@ -34,7 +32,7 @@ public class Menu extends LongIdObject
   }
 
   public Boolean getIsLeaf() {
-    return new Boolean(null != entry);
+    return null != entry;
   }
 
   public int compareTo(Object object) {

@@ -18,15 +18,16 @@
  */
 package org.beanfuse.security.web.action;
 
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
 import org.beanfuse.commons.lang.SeqStringUtil;
 import org.beanfuse.commons.model.Entity;
 import org.beanfuse.commons.query.EntityQuery;
 import org.beanfuse.commons.query.OrderUtils;
+import org.beanfuse.security.model.Resource;
 import org.beanfuse.security.portal.model.Menu;
 import org.beanfuse.security.portal.service.MenuService;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,7 +53,7 @@ public class MenuAction extends SecurityBaseAction {
       throws Exception {
     request.setAttribute("profiles", utilService.loadAll(org.beanfuse.security.portal.model.MenuProfile.class));
     Menu menu = (Menu) entity;
-    List resurces = utilService.loadAll(org.beanfuse.security.Resource.class);
+    List resurces = utilService.loadAll(Resource.class);
     Set existResources = menu.getResources();
     if (null != resurces)
       resurces.removeAll(existResources);
@@ -66,7 +67,7 @@ public class MenuAction extends SecurityBaseAction {
       List resources = new ArrayList();
       String resourceIdSeq = request.getParameter("resourceIds");
       if (null != resourceIdSeq && resourceIdSeq.length() > 0)
-        resources = utilService.load(org.beanfuse.security.Resource.class, "id", SeqStringUtil.transformToLong(resourceIdSeq));
+        resources = utilService.load(Resource.class, "id", SeqStringUtil.transformToLong(resourceIdSeq));
       menu.getResources().clear();
       menu.getResources().addAll(resources);
       menuService.saveOrUpdate(menu);
