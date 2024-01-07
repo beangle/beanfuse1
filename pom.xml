@@ -14,7 +14,6 @@
   <properties>
     <bundle.symbolicName>org.beangle.beanfuse</bundle.symbolicName>
     <bundle.namespace>org.beanfuse</bundle.namespace>
-    <maven.javadoc.skip>true</maven.javadoc.skip>
   </properties>
 
   <dependencies>
